@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 @Component
 public interface AlbumMapper {
-    AlbumResponseDTO toResponseDTO(Album album);
+    AlbumResponseDTO toDTO(Album album);
 
     Album toEntity(AlbumRequestDTO albumRequestDTO);
 
