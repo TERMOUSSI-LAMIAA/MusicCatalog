@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/categories")
+@RequestMapping("/albums")
 @Validated
 public class AlbumController {
     private final AlbumService albumService;
