@@ -26,7 +26,7 @@ public class AlbumService {
         return albums.map(albumMapper::toDTO);
     }
 
-    public AlbumResponseDTO getAlbumById(Long id) {
+    public AlbumResponseDTO getAlbumById(String id) {
         Album album=albumRepository.findById(id).orElseThrow(()->new AlbumException(id));
         return albumMapper.toDTO(album);
     }
@@ -37,14 +37,14 @@ public class AlbumService {
         return albumMapper.toDTO(savedAlbum);
     }
 
-    public AlbumResponseDTO updateAlbum(Long id, AlbumRequestDTO albumRequestDTO) {
+    public AlbumResponseDTO updateAlbum(String id, AlbumRequestDTO albumRequestDTO) {
         Album album=albumRepository.findById(id).orElseThrow(()->new AlbumException(id));
         albumMapper.updateEntityFromDTO(albumRequestDTO,album);
         Album updatedAlbum = albumRepository.save(album);
         return albumMapper.toDTO(updatedAlbum);
     }
 
-    public void deleteAlbum(Long id) {
+    public void deleteAlbum(String id) {
         Album album=albumRepository.findById(id).orElseThrow(()->new AlbumException(id));
         albumRepository.delete(album);
     }

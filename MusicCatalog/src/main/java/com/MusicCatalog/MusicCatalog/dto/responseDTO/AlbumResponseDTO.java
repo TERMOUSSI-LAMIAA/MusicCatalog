@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class AlbumResponseDTO {
 
 
-    private Long id;
+    private String id;
     private String title;
     private String artist;
     private Integer year;
