@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/albums")
+@RequestMapping("/api")
 @Validated
 public class AlbumController {
     private final AlbumService albumService;
@@ -26,44 +26,44 @@ public class AlbumController {
         return ResponseEntity.ok(albums);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/albums/{id}")
     public ResponseEntity<AlbumResponseDTO> getAlbumById(@PathVariable String id) {
       AlbumResponseDTO album= albumService.getAlbumById(id);
       return ResponseEntity.ok(album);
     }
 
-    @PostMapping
+    @PostMapping("/albums")
     public ResponseEntity<AlbumResponseDTO> createAlbum(@RequestBody AlbumRequestDTO albumRequestDTO) {
         AlbumResponseDTO album=  albumService.createAlbum(albumRequestDTO);
         return  ResponseEntity.ok(album);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/albums/{id}")
     public ResponseEntity<AlbumResponseDTO> updateAlbum(@PathVariable String id, @RequestBody AlbumRequestDTO albumRequestDTO) {
         AlbumResponseDTO album=albumService.updateAlbum(id, albumRequestDTO);
         return ResponseEntity.ok(album);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/albums/{id}")
     public ResponseEntity<Void> deleteAlbum(@PathVariable String id) {
         albumService.deleteAlbum(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/search/title")
+    @GetMapping("/albums/search/title")
     public ResponseEntity<Page<AlbumResponseDTO>> searchAlbumsByTitle(@RequestParam String title, Pageable pageable) {
         Page<AlbumResponseDTO> albums= albumService.searchAlbumsByTitle(title, pageable);
         return ResponseEntity.ok(albums);
 
     }
 
-    @GetMapping("/search/artist")
+    @GetMapping("/albums/search/artist")
     public ResponseEntity<List<AlbumResponseDTO>> searchAlbumsByArtist(@RequestParam String artist) {
         List<AlbumResponseDTO> albums= albumService.searchAlbumsByArtist(artist);
         return ResponseEntity.ok(albums);
     }
 
-    @GetMapping("/filter/year")
+    @GetMapping("/albums/filter/year")
     public ResponseEntity<Page<AlbumResponseDTO>> filterAlbumsByYear(@RequestParam int year, Pageable pageable) {
         Page<AlbumResponseDTO> albums=   albumService.filterAlbumsByYear(year, pageable);
         return ResponseEntity.ok(albums);
