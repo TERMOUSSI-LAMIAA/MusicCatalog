@@ -20,7 +20,7 @@ import java.util.List;
 public class AlbumController {
     private final AlbumService albumService;
 
-    @GetMapping
+    @GetMapping("/albums")
     public ResponseEntity<Page<AlbumResponseDTO>> getAllAlbums(Pageable pageable) {
         Page<AlbumResponseDTO> albums=albumService.getAllAlbums(pageable);
         return ResponseEntity.ok(albums);
