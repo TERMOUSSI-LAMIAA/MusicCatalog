@@ -11,9 +11,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @AllArgsConstructor
 public class UserService {
+//    private final PasswordEncoder passwordEncoder;
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
@@ -30,6 +32,8 @@ public class UserService {
 
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
         User user = userMapper.toEntity(userRequestDTO);
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //check login uunique
         User savedUser = userRepository.save(user);
         return userMapper.toDTO(savedUser);
     }

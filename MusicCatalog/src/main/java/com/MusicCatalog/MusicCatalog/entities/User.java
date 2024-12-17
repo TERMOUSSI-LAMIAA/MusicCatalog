@@ -1,15 +1,15 @@
 package com.MusicCatalog.MusicCatalog.entities;
 
 
-import com.MusicCatalog.MusicCatalog.entities.enums.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -26,6 +26,7 @@ public class User {
 
     @NotNull(message = "Active status cannot be null")
     private Boolean active;
-
-    private Collection<Role> roles;
+    
+    @DBRef
+    private List<Role> roles;
 }
