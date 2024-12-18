@@ -3,7 +3,7 @@ package com.MusicCatalog.MusicCatalog;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.MusicCatalog.MusicCatalog")
 public class MusicCatalogApplication {
 
 	public static void main(String[] args) {
