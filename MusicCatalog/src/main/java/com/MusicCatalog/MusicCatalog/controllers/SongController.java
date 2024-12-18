@@ -20,43 +20,43 @@ public class SongController {
 
     private final SongService songService;
 
-    @GetMapping("/songs")
+    @GetMapping("/user/songs")
     public ResponseEntity<Page<SongResponseDTO>> getAllSongs(Pageable pageable) {
         Page<SongResponseDTO> songs = songService.getAllSongs(pageable);
         return ResponseEntity.ok(songs);
     }
 
-    @GetMapping("/songs/{id}")
+    @GetMapping("/user/songs/{id}")
     public ResponseEntity<SongResponseDTO> getSongById(@PathVariable String id) {
         SongResponseDTO song = songService.getSongById(id);
         return ResponseEntity.ok(song);
     }
 
-    @PostMapping("/songs")
+    @PostMapping("/admin/songs")
     public ResponseEntity<SongResponseDTO> createSong(@RequestBody SongRequestDTO songRequestDTO) {
         SongResponseDTO song = songService.createSong(songRequestDTO);
         return ResponseEntity.ok(song);
     }
 
-    @PutMapping("/songs/{id}")
+    @PutMapping("/admin/songs/{id}")
     public ResponseEntity<SongResponseDTO> updateSong(@PathVariable String id, @RequestBody SongRequestDTO songRequestDTO) {
         SongResponseDTO song = songService.updateSong(id, songRequestDTO);
         return ResponseEntity.ok(song);
     }
 
-    @DeleteMapping("/songs/{id}")
+    @DeleteMapping("/admin/songs/{id}")
     public ResponseEntity<Void> deleteSong(@PathVariable String id) {
         songService.deleteSong(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/songs/search/title")
+    @GetMapping("/user/songs/search/title")
     public ResponseEntity<Page<SongResponseDTO>> searchSongsByTitle(@RequestParam String title, Pageable pageable) {
         Page<SongResponseDTO> songs = songService.searchSongsByTitle(title, pageable);
         return ResponseEntity.ok(songs);
     }
 
-    @GetMapping("/songs/search/album")
+    @GetMapping("/user/songs/search/album")
     public ResponseEntity<List<SongResponseDTO>> searchSongsByAlbumId(@RequestParam String albumId) {
         List<SongResponseDTO> songs = songService.searchSongsByAlbumId(albumId);
         return ResponseEntity.ok(songs);

@@ -9,8 +9,8 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    private final String jwtSecret = "secureJwtSecretKey"; // Secure key
-    private final long jwtExpirationMs = 3600000; // 1 hour
+    private final String jwtSecret = "secureJwtSecretKey";
+    private final long jwtExpirationMs = 3600000;
 
     public String generateToken(String username, String role) {
         return JWT.create()

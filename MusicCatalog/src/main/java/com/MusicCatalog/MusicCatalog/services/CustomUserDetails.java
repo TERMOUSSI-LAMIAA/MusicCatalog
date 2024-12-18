@@ -39,17 +39,17 @@ public class CustomUserDetails implements UserDetails{
 
     @Override
     public boolean isAccountNonExpired() {
-        return true; // You can implement account expiration logic if needed
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return active != null && active;  // Assuming you want to lock the account if inactive
+        return active != null && active;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // You can implement credentials expiration logic if needed
+        return true;
     }
 
     @Override
